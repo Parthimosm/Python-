@@ -1,7 +1,7 @@
 import pygame
 import time
 import random
-
+#backgroun: R:0, G:32, B:47
 pygame.init()
 
 display_width = 800
@@ -18,6 +18,7 @@ pygame.display.set_caption('Alien')
 white = (255,255,255)
 black = (0,0,0)
 
+score_change = 0
 
 red = (200,0,0)
 light_red = (255,0,0)
@@ -289,12 +290,14 @@ def gameLoop():
 
     global hit
     hit = False
+    global deathCount
+    deathCount = 0
 
 
     def fireShell(xy, tankx, tanky, turpos):
         fire = True
         global hit
-
+        global score_change
         startingShell = list(xy)
         print("FIRE!", xy)
 
@@ -311,14 +314,22 @@ def gameLoop():
             check_x_2 = startingShell[0] >= randAlienX
             check_y_1 = startingShell[1] <= randAlienY
             check_y_2 = startingShell[1] >= randAlienY + 10
+            global deathCount
+
             if startingShell[1] < 0:
                 fire = False
+                print("miss!", xy)
             if check_x_1 and check_x_2 and check_y_1:
-                print("hit")
                 fire = False
                 hit = True
+                deathCount += 1
+                score_change += 1
+                print("hit", xy, ",", deathCount, "/20")
             pygame.display.update()
 
+    def score(deathcounter):
+        text = smallfont.render("score: "+str(deathCount), True, black)
+        gameDisplay.blit(text, [display_width/2,0])
 
     while not gameExit:
 
@@ -402,57 +413,23 @@ def gameLoop():
             randAlienY = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
             hit = False
 
+        if deathCount == 20:
+            game_intro()
+            print("you win!")
         ##randAlienY = round(random.randrange(0, display_height - 30))  # /10.0)*10.0
+
+        score(deathCount)
 
         pygame.display.update()
         clock.tick(FPS)
+
+
 
     pygame.quit()
     quit()
 
 game_intro()
 gameLoop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
