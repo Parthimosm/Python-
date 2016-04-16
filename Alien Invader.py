@@ -203,13 +203,10 @@ def pause():
 '''''
 def fireShell(xy,tankx,tanky,turpos):
     fire = True
-
     startingShell = list(xy)
     print("FIRE!",xy)
-
     shell_location = startingShell
     #pygame.draw.circle(gameDisplay, red, (startingShell[0], startingShell[1]), 5)
-
     while fire:
         time.sleep(0.005)
         startingShell[1] -= 10
@@ -217,19 +214,16 @@ def fireShell(xy,tankx,tanky,turpos):
         pygame.draw.circle(gameDisplay, white, (startingShell[0], startingShell[1] + 10), 5)
         if startingShell[1] < 0:
             fire = False
-
         check_x_1 = startingShell[0] <= randAlienX + 30
         check_x_2 = startingShell[0] >= randAlienX
         check_y_1 = startingShell[1] <= randAlienY
         check_y_2 = startingShell[1] >= randAlienY - 10
-
         if check_x_1 and check_x_2 and check_y_1:
             print("hit")
             fire = False
             hit = True
         pygame.display.update()
         #clock.tick(3000)
-
 '''''
 
 def game_intro():
@@ -285,262 +279,45 @@ def gameLoop():
     currentTurPos = 0
     changeTur = 0
 
+    global randAlienX
+    global randAlienY
+
     randAlienX = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
     randAlienY = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
 
-    randAlienX2 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY2 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
 
-    randAlienX3 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY3 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX4 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY4 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX5 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY5 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX6 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY6 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX7 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY7 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX8 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY8 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX9 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY9 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX10 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY10 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX11 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY11 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX12 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY12 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX13 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY13 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX14 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY14 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
-
-    randAlienX15 = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
-    randAlienY15 = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
 
     global hit
+    hit = False
 
 
     def fireShell(xy, tankx, tanky, turpos):
         fire = True
         global hit
 
-
         startingShell = list(xy)
         print("FIRE!", xy)
 
-        shell_location = startingShell
-        # pygame.draw.circle(gameDisplay, red, (startingShell[0], startingShell[1]), 5)
-
         while fire:
-            time.sleep(0.0001)
-            startingShell[1] -= 20
+            time.sleep(0.01)
+            startingShell[1] -= 15
             pygame.draw.circle(gameDisplay, red, (startingShell[0], startingShell[1]), 5)
-            pygame.draw.circle(gameDisplay, white, (startingShell[0], startingShell[1] + 20), 5)
-            if startingShell[1] < 0:
-                fire = False
-
+            pygame.draw.circle(gameDisplay, white, (startingShell[0], startingShell[1] + 15), 5)
+            global check_x_1
+            global check_x_2
+            global check_y_1
+            global check_y_2
             check_x_1 = startingShell[0] <= randAlienX + 30
             check_x_2 = startingShell[0] >= randAlienX
             check_y_1 = startingShell[1] <= randAlienY
-            check_y_2 = startingShell[1] >= randAlienY - 10
-            var0 = True
-            var1 = True
-            var2 = True
-            var3 = True
-            var4 = True
-            var5 = True
-            var6 = True
-            var7 = True
-            var8 = True
-            var9 = True
-            var10 = True
-            var11 = True
-            var12 = True
-            var13 = True
-            var14 = True
-            var15 = True
-
+            check_y_2 = startingShell[1] >= randAlienY + 10
+            if startingShell[1] < 0:
+                fire = False
             if check_x_1 and check_x_2 and check_y_1:
                 print("hit")
                 fire = False
-                hit = hit + 1
-                var0 = False
+                hit = True
             pygame.display.update()
-
-            check_x2_1 = startingShell[0] <= randAlienX2 + 30
-            check_x2_2 = startingShell[0] >= randAlienX2
-            check_y2_1 = startingShell[1] <= randAlienY2
-            check_y2_2 = startingShell[1] >= randAlienY2 - 10
-
-            if check_x2_1 and check_x2_2 and check_y2_1:
-                print("hit")
-                fire = False
-                hit = hit + 1
-                var1 = False
-            pygame.display.update()
-
-            check_x3_1 = startingShell[0] <= randAlienX3 + 30
-            check_x3_2 = startingShell[0] >= randAlienX3
-            check_y3_1 = startingShell[1] <= randAlienY3
-            check_y3_2 = startingShell[1] >= randAlienY3 - 10
-
-            if check_x3_1 and check_x3_2 and check_y3_1:
-                print("hit")
-                fire = False
-                hit = hit + 1
-                var2 = False
-                var2 = False
-            pygame.display.update()
-
-            check_x4_1 = startingShell[0] <= randAlienX4 + 30
-            check_x4_2 = startingShell[0] >= randAlienX4
-            check_y4_1 = startingShell[1] <= randAlienY4
-            check_y4_2 = startingShell[1] >= randAlienY4 - 10
-
-            if check_x4_1 and check_x4_2 and check_y4_1 and check_y4_2:
-                print("hit")
-                fire = False
-                hit = hit + 1
-                var3 = False
-            pygame.display.update()
-
-            check_x5_1 = startingShell[0] <= randAlienX5 + 30
-            check_x5_2 = startingShell[0] >= randAlienX5
-            check_y5_1 = startingShell[1] <= randAlienY5
-            check_y5_2 = startingShell[1] >= randAlienY5 - 10
-
-            if check_x5_1 and check_x5_2 and check_y5_1 and check_y5_2:
-                print("hit")
-                fire = False
-                hit = hit + 1
-                var4 = False
-            pygame.display.update()
-
-            check_x6_1 = startingShell[0] <= randAlienX6 + 30
-            check_x6_2 = startingShell[0] >= randAlienX6
-            check_y6_1 = startingShell[1] <= randAlienY6
-            check_y6_2 = startingShell[1] >= randAlienY6 - 10
-
-            if check_x6_1 and check_x6_2 and check_y6_1 and check_y6_2:
-                print("hit")
-                fire = False
-                hit = hit + 1
-            pygame.display.update()
-
-            check_x7_1 = startingShell[0] <= randAlienX7 + 30
-            check_x7_2 = startingShell[0] >= randAlienX7
-            check_y7_1 = startingShell[1] <= randAlienY7
-            check_y7_2 = startingShell[1] >= randAlienY7 - 10
-
-            if check_x7_1 and check_x7_2 and check_y7_1 and  check_y7_2:
-                print("hit")
-                fire = False
-                hit = hit + 1
-            pygame.display.update()
-
-            check_x8_1 = startingShell[0] <= randAlienX8 + 30
-            check_x8_2 = startingShell[0] >= randAlienX8
-            check_y8_1 = startingShell[1] <= randAlienY8
-            check_y8_2 = startingShell[1] >= randAlienY8 - 10
-
-            if check_x8_1 and check_x8_2 and check_y8_1:
-                print("hit")
-                fire = False
-                hit = hit + 1
-            pygame.display.update()
-
-            check_x9_1 = startingShell[0] <= randAlienX9 + 30
-            check_x9_2 = startingShell[0] >= randAlienX9
-            check_y9_1 = startingShell[1] <= randAlienY9
-            check_y9_2 = startingShell[1] >= randAlienY9 - 10
-
-            if check_x9_1 and check_x9_2 and check_y9_1 and check_y9_2:
-                print("hit")
-                fire = False
-                hit = hit + 1
-            pygame.display.update()
-
-            check_x10_1 = startingShell[0] <= randAlienX10 + 30
-            check_x10_2 = startingShell[0] >= randAlienX10
-            check_y10_1 = startingShell[1] <= randAlienY10
-            check_y10_2 = startingShell[1] >= randAlienY10 - 10
-
-            if check_x10_1 and check_x10_2 and check_y10_1:
-                print("hit")
-                fire = False
-                hit = hit + 1
-            pygame.display.update()
-
-            check_x11_1 = startingShell[0] <= randAlienX11 + 30
-            check_x11_2 = startingShell[0] >= randAlienX11
-            check_y11_1 = startingShell[1] <= randAlienY11
-            check_y11_2 = startingShell[1] >= randAlienY11 - 10
-
-            if check_x11_1 and check_x11_2 and check_y11_1 and check_y11_2:
-                print("hit")
-                fire = False
-                hit = hit + 1
-            pygame.display.update()
-
-            check_x12_1 = startingShell[0] <= randAlienX12 + 30
-            check_x12_2 = startingShell[0] >= randAlienX12
-            check_y12_1 = startingShell[1] <= randAlienY12
-            check_y12_2 = startingShell[1] >= randAlienY12 - 10
-
-            if check_x12_1 and check_x12_2 and check_y12_1 and  check_y12_2:
-                print("hit")
-                fire = False
-                hit = hit + 1
-            pygame.display.update()
-
-            check_x13_1 = startingShell[0] <= randAlienX13 + 30
-            check_x13_2 = startingShell[0] >= randAlienX13
-            check_y13_1 = startingShell[1] <= randAlienY13
-            check_y13_2 = startingShell[1] >= randAlienY13 - 10
-
-            if check_x13_1 and check_x13_2 and check_y13_1 and check_y13_2:
-                print("hit")
-                fire = False
-                hit = hit + 1
-            pygame.display.update()
-
-            check_x14_1 = startingShell[0] <= randAlienX14 + 30
-            check_x14_2 = startingShell[0] >= randAlienX14
-            check_y14_1 = startingShell[1] <= randAlienY14
-            check_y14_2 = startingShell[1] >= randAlienY14 - 10
-
-            if check_x14_1 and check_x14_2 and check_y14_1 and check_y14_2:
-                print("hit")
-                fire = False
-                hit = hit + 1
-            pygame.display.update()
-
-            check_x15_1 = startingShell[0] <= randAlienX15 + 30
-            check_x15_2 = startingShell[0] >= randAlienX15
-            check_y15_1 = startingShell[1] <= randAlienY15
-            check_y15_2 = startingShell[1] >= randAlienY15 - 10
-
-            if check_x15_1 and check_x15_2 and check_y15_1 and check_y15_2:
-                print("hit")
-                fire = False
-                hit = hit + 1
-            pygame.display.update()
-
-
-
 
 
     while not gameExit:
@@ -617,53 +394,13 @@ def gameLoop():
 
         gameDisplay.fill(white)
         gun = tank(mainTankX, mainTankY, currentTurPos)
-        if hit ==  0:
-            pygame.draw.rect(gameDisplay, red, [randAlienX, randAlienY, 30, 10])
 
+        pygame.draw.rect(gameDisplay, red, [randAlienX, randAlienY, 30, 10])
 
-        if hit == 1:
-            pygame.draw.rect(gameDisplay, red, [randAlienX2, randAlienY2, 30, 10])
-
-
-        if hit == 2:
-            pygame.draw.rect(gameDisplay, red, [randAlienX3, randAlienY3, 30, 10])
-
-        if hit == 3:
-            pygame.draw.rect(gameDisplay, red, [randAlienX4, randAlienY4, 30, 10])
-
-        if hit == 4:
-            pygame.draw.rect(gameDisplay, red, [randAlienX5, randAlienY5, 30, 10])
-
-        if hit == 5:
-            pygame.draw.rect(gameDisplay, red, [randAlienX6, randAlienY6, 30, 10])
-
-        if hit == 6:
-            pygame.draw.rect(gameDisplay, red, [randAlienX7, randAlienY7, 30, 10])
-
-        if hit == 7:
-            pygame.draw.rect(gameDisplay, red, [randAlienX8, randAlienY8, 30, 10])
-
-        if hit == 8:
-            pygame.draw.rect(gameDisplay, red, [randAlienX9, randAlienY9, 30, 10])
-
-        if hit == 9:
-            pygame.draw.rect(gameDisplay, red, [randAlienX10, randAlienY10, 30, 10])
-
-        if hit == 10:
-            pygame.draw.rect(gameDisplay, red, [randAlienX11, randAlienY11, 30, 10])
-
-        if hit == 11:
-            pygame.draw.rect(gameDisplay, red, [randAlienX12, randAlienY12, 30, 10])
-
-        if hit == 12:
-            pygame.draw.rect(gameDisplay, red, [randAlienX13, randAlienY13, 30, 10])
-
-        if hit == 13:
-            pygame.draw.rect(gameDisplay, red, [randAlienX14, randAlienY14, 30, 10])
-
-        if hit == 14:
-            pygame.draw.rect(gameDisplay, red, [randAlienX15, randAlienY15, 30, 10])
-
+        if hit:
+            randAlienX = round(random.randrange(0, display_width - 30))  # /10.0)*10.0
+            randAlienY = round(random.randrange(50, display_height - 100))  # /10.0)*10.0
+            hit = False
 
         ##randAlienY = round(random.randrange(0, display_height - 30))  # /10.0)*10.0
 
@@ -675,13 +412,6 @@ def gameLoop():
 
 game_intro()
 gameLoop()
-
-
-
-
-
-
-
 
 
 
